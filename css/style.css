@@ -5,9 +5,10 @@ html{
 body{
 	font-family: Helvetica, Arial, sans-serif;
 	-webkit-font-smoothing: antialiased;
-	font-size: 14px;
+	font-size: 12px;
+	letter-spacing: .02em;
 	color:black;
-	padding: 24px 24px;
+	padding: 16px 16px;
 	max-width: 100%;
 	margin: 0;
 	/* position: fixed; */
@@ -39,5 +40,6 @@ footer {
 }
 
 header {
+	color: rgba(255, 255, 255, 0.6);
 	padding-bottom: 32px;
 }
