@@ -61,12 +61,7 @@ function draw(){
 // }
 
 function mousePressed() {
-  if (mouseButton === LEFT) {
   k += 1;
-  }
-  if (mouseButton === RIGHT) {
-  k += -1;
-  }
 }
 
 function toroidalTorus(r0, r1) {
