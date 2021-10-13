@@ -9,40 +9,44 @@ function setup(){
   canvas.style('z-index', ' -1');
   canvas.style('position', 'absolute');
   angleMode(DEGREES);
+  colorMode(RGB, 255, 255, 255, 1);
+  r0_val = createDiv();
+  r0_slider = createSlider(0, 200, 130, 1);
 
-  // r0_val = createDiv();
-  // r0_slider = createSlider(0, 200, 130, 1);
-  //
-  // r1_val = createDiv();
-  // r1_slider = createSlider(0, 200, 80, 1);
+  r1_val = createDiv();
+  r1_slider = createSlider(0, 200, 80, 1);
 
-  // k_val = createDiv();
-  // k_slider = createSlider(0 ,10 ,3 ,1 );
+  k_val = createDiv();
+  k_slider = createSlider(0 ,10 ,3 ,1 );
+
 
 }
 
 function draw(){
-  background(0);
-  // orbitControl(8,8);
-  rotateX(-25);
-  // rotateX(offset);
-  rotateY(offset);
-  rotateZ(offset);
+  background(240);
+  orbitControl(8,8);
+  rotateX(-30);
+  // rotateY(offset);
+  // rotateZ(offset);
   let d1 = dist(mouseX, 0, windowWidth/2, 0);
   let d2 = dist(mouseY, 0, windowHeight/2, 0)
-  r0 = map(d1, 0 , windowWidth/2, 0, 300);
-  r1 = map(d2, 0, windowHeight/2, 0, 300);
+  // r0 = map(d1, 0 , windowWidth/2, 0, 300);
+  // r1 = map(d2, 0, windowHeight/2, 0, 300);
 
-
+  k = k_slider.value();
+  r0 = r0_slider.value();
+  r1 = r1_slider.value();
   toroidalSpiral(r0, r1, k);
-  // toroidalTorus(r0, r1);
+
+  toroidalTorus(r0, r1);
+
 
 
   offset += 0.5;
 
-  // r0_val.html("radius 0: " + r0_slider.value());
-  // r1_val.html("radius 1: " + r1_slider.value());
-  // k_val.html("k: " + k_slider.value());
+  r0_val.html("radius 0: " + r0_slider.value());
+  r1_val.html("radius 1: " + r1_slider.value());
+  k_val.html("k: " + k_slider.value());
 
 }
 
@@ -62,24 +66,26 @@ function keyPressed() {
 
 //Normal Torus
 function toroidalTorus(r0, r1) {
-  strokeWeight(3);
-  stroke(100);
-  for(let theta = 0; theta < 360; theta += 8){
+  noStroke();
+  strokeWeight(2);
+  fill(255,255,0, 0.5);
+  for(let theta = 0; theta < 360; theta += 20){
     beginShape(POINTS);
-    for(let phi = 0; phi < 360; phi += 8){
-      let x = (r0 + r1 * cos(phi+offset)) * sin(theta);
-      let y = r1 * sin(phi+offset);
-      let z = (r0 + r1 * cos(phi+offset)) * cos(theta);
+    for(let phi = 0; phi < 360; phi += 10){
+      let x = (r0 + r1 * cos(phi)) * sin(theta);
+      let y = r1 * sin(phi);
+      let z = (r0 + r1 * cos(phi)) * cos(theta);
       vertex(x,y,z);
     }
-    endShape();
+    endShape(CLOSE);
+
   }
 }
 
 //Spiral
 function toroidalSpiral(r0, r1, k) {
-  strokeWeight(10);
-  stroke(255);
+  strokeWeight(8);
+  stroke(0);
   beginShape(POINTS);
     for(let theta = 0; theta < 360; theta += 0.1){
       let phi = k*theta;
