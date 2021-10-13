@@ -29,7 +29,7 @@ function setup(){
 
 function draw(){
   background(0);
-  orbitControl(8,8);
+  // orbitControl(8,8);
   rotateX(-25);
   // rotateX(offset);
   rotateY(-offset);
@@ -61,7 +61,12 @@ function draw(){
 // }
 
 function mousePressed() {
-    k += 1;
+  if (mouseButton === LEFT) {
+  k += 1;
+  }
+  if (mouseButton === RIGHT) {
+  k += -1;
+  }
 }
 
 function toroidalTorus(r0, r1) {
