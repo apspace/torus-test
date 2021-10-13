@@ -1,5 +1,5 @@
 let offset = 0;
-let r0, r1, k = 0;
+let r0, r1, k = 3;
 let r0_slider, r1_slider, k_slider;
 let r0_val, r1_val, k_val;
 
