@@ -52,12 +52,16 @@ function draw(){
 
 }
 
-  function keyPressed() {
-  if (keyCode === LEFT_ARROW) {
-    k += -1;
-  } else if (keyCode === RIGHT_ARROW) {
+//   function keyPressed() {
+//   if (keyCode === LEFT_ARROW) {
+//     k += -1;
+//   } else if (keyCode === RIGHT_ARROW) {
+//     k += 1;
+//   }
+// }
+
+function mousePressed() {
     k += 1;
-  }
 }
 
 function toroidalTorus(r0, r1) {
