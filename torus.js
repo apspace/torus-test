@@ -9,13 +9,7 @@ function setup(){
   canvas.style('z-index', ' -1');
   canvas.style('position', 'absolute');
   angleMode(DEGREES);
-  // colorMode()
-  // stroke(50);
-  // strokeWeight(3);
-  stroke(0);
-  // fill(255,255,0);
 
-  //
   // r0_val = createDiv();
   // r0_slider = createSlider(0, 200, 130, 1);
   //
@@ -32,7 +26,7 @@ function draw(){
   // orbitControl(8,8);
   rotateX(-25);
   // rotateX(offset);
-  rotateY(-offset);
+  rotateY(offset);
   rotateZ(offset);
   let d1 = dist(mouseX, 0, windowWidth/2, 0);
   let d2 = dist(mouseY, 0, windowHeight/2, 0)
@@ -44,7 +38,7 @@ function draw(){
   // toroidalTorus(r0, r1);
 
 
-  offset += 0.8;
+  offset += 0.5;
 
   // r0_val.html("radius 0: " + r0_slider.value());
   // r1_val.html("radius 1: " + r1_slider.value());
@@ -52,18 +46,21 @@ function draw(){
 
 }
 
-//   function keyPressed() {
-//   if (keyCode === LEFT_ARROW) {
-//     k += -1;
-//   } else if (keyCode === RIGHT_ARROW) {
-//     k += 1;
-//   }
-// }
-
-function mousePressed() {
-  k += 1;
+//Change by Keyboard
+function keyPressed() {
+  if (keyCode === LEFT_ARROW) {
+    k += -1;
+  } else if (keyCode === RIGHT_ARROW) {
+    k += 1;
+  }
 }
 
+//Change by Mouse
+// function mousePressed() {
+//   k += 1;
+// }
+
+//Normal Torus
 function toroidalTorus(r0, r1) {
   strokeWeight(3);
   stroke(100);
@@ -79,6 +76,7 @@ function toroidalTorus(r0, r1) {
   }
 }
 
+//Spiral
 function toroidalSpiral(r0, r1, k) {
   strokeWeight(10);
   stroke(255);
